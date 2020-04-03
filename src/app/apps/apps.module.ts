@@ -17,7 +17,8 @@ import {
   MatExpansionModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { CalendarModule, CalendarDateFormatter } from 'angular-calendar';
+import {CalendarModule, DateAdapter , CalendarCommonModule} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -48,10 +49,15 @@ import { CalendarDialogComponent } from './fullcalendar/fullcalendar.component';
     MatTabsModule,
     MatDialogModule,
     MatExpansionModule,
-    // CalendarModule.forRoot(),
+    CalendarModule,
     FlexLayoutModule,
     ChartsModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    CalendarCommonModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   declarations: [
     FullcalendarComponent,
