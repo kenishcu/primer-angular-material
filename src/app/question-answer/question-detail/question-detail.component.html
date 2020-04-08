@@ -1,0 +1,31 @@
+<div>
+  <div div fxFlex="80%">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Question Answer</mat-card-title>
+        <mat-card-subtitle>questions posted today</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>Brunch this weekend? - I will be in your neighborhood.</h1>
+        <a href="javascript:;" class="mr-3">
+          <span matBadge="2" matBadgeOverlap="false">Answers</span>
+        </a>
+        <hr>
+        <div style="margin-left: 100px">
+            <mat-card class="shadow-none" *ngFor="let item of messages;">
+                <mat-card-header>
+                  <img matCardAvatar src="{{item.photo}}" alt="">
+                  <mat-card-title>{{item.from}}</mat-card-title>
+                  <mat-card-subtitle>Answered Sep 27 2017</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>{{item.subject}} - {{item.message}}</p>
+                  <span *ngFor="let star of stars" [class.mat-text-default]="star < 3" class="mat-text-muted">&#9733;</span>
+                </mat-card-content>
+                <hr>
+            </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

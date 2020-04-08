@@ -139,6 +139,11 @@ const MENUITEMS = [
     name: 'TASKBOARD',
     type: 'link',
     icon: 'view_column',
+  }, {
+    state: 'question-answer',
+    name: 'Q&A',
+    type: 'link',
+    icon: 'question_answer'
   },
   {
     state: 'charts',

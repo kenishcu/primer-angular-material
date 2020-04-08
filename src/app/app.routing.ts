@@ -18,6 +18,9 @@ export const AppRoutes: Routes = [{
     path: 'material',
     loadChildren: './material/material.module#MaterialComponentsModule'
   }, {
+    path: 'question-answer',
+    loadChildren: './question-answer/question-answer.module#QuestionAnswerModule'
+  }, {
     path: 'ecommerce',
     loadChildren: './ecommerce/ecommerce.module#EcommerceModule'
   }, {

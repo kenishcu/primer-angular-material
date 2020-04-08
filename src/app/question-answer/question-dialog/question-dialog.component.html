@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Bạn đang đặt câu hỏi: </h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <form [formGroup]="questionForm">
+      <div class="mb-1">
+        <div fxFlex="50">
+          <mat-form-field>
+            <mat-label>Tiêu đề</mat-label>
+            <input matInput placeholder="tiêu đề" formControlName="title">
+          </mat-form-field>
+          <br>
+        </div>
+        <div fxFlex="50">
+          <mat-form-field>
+            <mat-select placeholder="Chọn khoa khám"
+                         formControlName="service">
+              <mat-option *ngFor="let cate of categories"
+                          [value]="cate">{{cate.service_category_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+        </div>
+      </div>
+      <div class="mb-1">
+        <mat-form-field style="width: 100%">
+          <textarea matInput placeholder="Câu hỏi" formControlName="desc"  rows="4"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="card__actions">
+  <button  mat-raised-button color="warn" type="button" mat-dialog-close>Hủy</button>
+  <button  mat-raised-button color="primary" type="button"  (click)="createQuestion()" >Trả lời</button>
+</mat-dialog-actions>
