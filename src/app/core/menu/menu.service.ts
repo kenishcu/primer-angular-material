@@ -142,8 +142,12 @@ const MENUITEMS = [
   }, {
     state: 'question-answer',
     name: 'Q&A',
-    type: 'link',
-    icon: 'question_answer'
+    type: 'sub',
+    icon: 'question_answer',
+    children: [
+      {state: 'main', name: 'Q&A'},
+      {state: 'comment', name: 'Comment'}
+    ]
   },
   {
     state: 'charts',

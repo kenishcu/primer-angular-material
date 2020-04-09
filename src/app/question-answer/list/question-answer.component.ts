@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import {QuestionDialogComponent} from './question-dialog/question-dialog.component';
+import {QuestionDialogComponent} from '../question-dialog/question-dialog.component';
 
 @Component({
   selector: 'app-widgets',
@@ -38,7 +38,7 @@ export class QuestionAnswerComponent {
   pageIndex: number;
 
   goDetail(item) {
-    this.router.navigate(['/question-answer/' , item._id]).then(nav => {
+    this.router.navigate(['/question-answer/main/' , item._id]).then(nav => {
       console.log(nav);
     }, err => {
       console.log(err);

@@ -1,0 +1,63 @@
+<div>
+  <div fxFlex="70%">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Question Answer</mat-card-title>
+        <mat-card-subtitle>questions posted today</mat-card-subtitle>
+      </mat-card-header>
+      <hr>
+      <mat-card-content>
+        <mat-list>
+          <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
+            <mat-card style="margin-top:5px">
+              <mat-card-header>
+                <img matCardAvatar src="{{item.photo}}" alt="">
+                <mat-card-title>{{item.from}}</mat-card-title>
+                <mat-card-subtitle>Answered Sep 27 2017</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{item.subject}} - {{item.message}}</p>
+<!--                <a href="javascript:;" class="mr-3">-->
+<!--                  <span matBadge="2" matBadgeOverlap="false">Answers</span>-->
+<!--                </a>-->
+                <p style="text-decoration: underline">
+                  <a>{{item.answers.length }} Answers</a>
+                </p>
+                <hr>
+                <div fxLayout="row wrap" class="text-uppercase" style="margin-top:5px">
+<!--                  <div fxFlex="15%"></div>-->
+                  <div fxFlex="15%">
+                    <button mat-button class="mt-0 mb-0">
+                      <mat-icon>comment</mat-icon>
+                      <span class="ml-0">COMMENT</span>
+                    </button>
+                  </div>
+                </div>
+<!--                *ngIf="item.answers && item.answers.length > 0"-->
+                <div>
+                    <hr>
+                    <div>
+                        <form [formGroup]="form">
+                            <div fxFlex="15%">
+                              <img matCardAvatar src="assets/images/face4.jpg" alt="">
+                            </div>
+
+                            <div fxFlex="85%">
+                              <mat-form-field style="width: 100%">
+                              <input matInput placeholder="" formControlName="comment">
+                              </mat-form-field>
+                            </div>
+                        </form>
+                    </div>
+                    <mat-card>
+
+                    </mat-card>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </ng-template>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

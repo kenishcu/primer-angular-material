@@ -13,11 +13,12 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { QuestionAnswerComponent } from './question-answer.component';
+import { QuestionAnswerComponent } from './list/question-answer.component';
 import { QuestionAnswerRoutes } from './question-answer.routing';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommentComponent } from './comment/comment.component';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule
   ],
   declarations: [QuestionAnswerComponent, QuestionDetailComponent,
-    QuestionDialogComponent],
+    QuestionDialogComponent, CommentComponent],
   entryComponents: [QuestionDialogComponent],
 
 })
