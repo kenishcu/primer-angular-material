@@ -6,10 +6,9 @@
         <mat-card-subtitle>questions posted today</mat-card-subtitle>
       </mat-card-header>
       <hr>
-      <mat-card-content>
+      <mat-card-content class="card-content">
         <mat-list>
-          <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
-            <mat-card style="margin-top:5px">
+            <mat-card style="margin-top:5px" *ngFor="let item of messages" class="border-card-sub">
               <mat-card-header>
                 <img matCardAvatar src="{{item.photo}}" alt="">
                 <mat-card-title>{{item.from}}</mat-card-title>
@@ -17,45 +16,49 @@
               </mat-card-header>
               <mat-card-content>
                 <p>{{item.subject}} - {{item.message}}</p>
-<!--                <a href="javascript:;" class="mr-3">-->
-<!--                  <span matBadge="2" matBadgeOverlap="false">Answers</span>-->
-<!--                </a>-->
                 <p style="text-decoration: underline">
-                  <a>{{item.answers.length }} Answers</a>
+                  <a (click)="showAnswer('show_'+ item._id)">{{item.answers.length }} Answers</a>
                 </p>
                 <hr>
                 <div fxLayout="row wrap" class="text-uppercase" style="margin-top:5px">
-<!--                  <div fxFlex="15%"></div>-->
                   <div fxFlex="15%">
-                    <button mat-button class="mt-0 mb-0">
+                    <button mat-button class="mt-0 mb-0" (click)="showAnswer('show_'+ item._id)">
                       <mat-icon>comment</mat-icon>
                       <span class="ml-0">COMMENT</span>
                     </button>
                   </div>
                 </div>
-<!--                *ngIf="item.answers && item.answers.length > 0"-->
-                <div>
-                    <hr>
-                    <div>
-                        <form [formGroup]="form">
-                            <div fxFlex="15%">
-                              <img matCardAvatar src="assets/images/face4.jpg" alt="">
-                            </div>
+                <div *ngIf="listShow['show_'+ item._id]">
+                  <hr>
+                  <div>
+                    <form [formGroup]="forms[item.index]" (keyup.enter)="keyUpEnter(item._id)">
+                      <div fxFlex="10%">
+                        <img matCardAvatar src="assets/images/face4.jpg" alt="">
+                      </div>
 
-                            <div fxFlex="85%">
-                              <mat-form-field style="width: 100%">
-                              <input matInput placeholder="" formControlName="comment">
-                              </mat-form-field>
-                            </div>
-                        </form>
-                    </div>
-                    <mat-card>
-
+                      <div fxFlex="90%">
+                        <mat-form-field style="width: 100%">
+                          <input matInput placeholder="" formControlName="comment">
+                        </mat-form-field>
+                      </div>
+                    </form>
+                  </div>
+                  <div *ngIf="item.answers && item.answers.length > 0">
+                    <mat-card  *ngFor="let answer of item.answers"  class="border-sub-card-sub">
+                      <mat-card-header>
+                        <img matCardAvatar src="assets/images/face4.jpg" alt="">
+                        <mat-card-title>{{answer.from}}</mat-card-title>
+                        <mat-card-subtitle>Answered Sep 27 2017</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <p>{{answer.message}}</p>
+                      </mat-card-content>
                     </mat-card>
+                  </div>
                 </div>
               </mat-card-content>
             </mat-card>
-          </ng-template>
+<!--          </ng-template>-->
         </mat-list>
       </mat-card-content>
     </mat-card>
